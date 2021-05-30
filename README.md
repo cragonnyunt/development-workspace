@@ -1,5 +1,7 @@
 # Development Workspace
 
+[![Development Workspace CI](https://github.com/cragonnyunt/development-workspace/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/cragonnyunt/development-workspace/actions/workflows/main.yml)
+
 Development Workspace Docker is the base image of docker built for developers. It contains the most used tools that every developers needed, and well prepared for comfortable development environment.
 
 Base image
