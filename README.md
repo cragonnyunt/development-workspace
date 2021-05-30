@@ -3,7 +3,7 @@
 Development Workspace Docker is the base image of docker built for developers. It contains the most used tools that every developers needed, and well prepared for comfortable development environment.
 
 Base image
-- phusion/baseimage:focal-1.0.0
+- [phusion/baseimage:focal-1.0.0](https://hub.docker.com/r/phusion/baseimage)
 
 Set of tools installed
 - git
