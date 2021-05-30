@@ -4,7 +4,7 @@ LABEL maintainer="mknyunt97@gmail.com"
 
 # update all packages
 RUN apt-get update && \
-    apt-get upgrade -y && \
+    apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
     apt-get install -y \
     apt-transport-https \
     git \
@@ -55,10 +55,6 @@ RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/inst
 # install zsh plugins
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
-# install tmux themes
-RUN git clone https://github.com/arcticicestudio/nord-tmux.git $HOME/.tmux/themes/nord-tmux
-RUN git clone https://github.com/arcticicestudio/nord-vim.git $HOME/.vim
-
 # install dir colors
 RUN git clone https://github.com/arcticicestudio/nord-dircolors.git $HOME/nord-dircolors && \
     ln -sr "$HOME/nord-dircolors/src/dir_colors" "$HOME/.dir_colors"
@@ -69,8 +65,11 @@ COPY zsh/zshrc ${HOME}/.zshrc
 # copy tmux config
 COPY tmux/tmux.conf ${HOME}/.tmux.conf
 
-#copy vim config
+# copy vim config
 COPY vim/vimrc ${HOME}/.vimrc
+
+# set tmux as default shell in bash
+RUN echo '[[ $TERM != "screen" ]] && exec tmux' >> ${HOME}/.bashrc
 
 USER root
 
