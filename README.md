@@ -48,7 +48,3 @@ docker build -t development-workspace \
     --build-arg WORKSPACE_USER=$WORKSPACE_USER \
     .
 ```
-
-## Future Works
-
-This development is intended to create more docker for specific language, like `php`, `python`, and `javascript`. Each docker will have its own set of tools and setup, this docker will be the minimal workspace for other.
