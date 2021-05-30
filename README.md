@@ -16,10 +16,10 @@ Set of tools installed
 - zsh
 - vim
 
-## Building the image
+## Pulling the image
 
 ```
-docker build -t development-workspace .
+docker pull cragonnyunt/development-docker
 ```
 
 ## Running the image
@@ -27,7 +27,14 @@ docker build -t development-workspace .
 ```
 docker run --rm -it \
     -v $(pwd):/workspace \
-    development-workspace
+    cragonnyunt/development-docker
+```
+
+## Building the image from source
+
+First clone this repository and run
+```
+docker build -t <image-name> .
 ```
 
 ## Features
