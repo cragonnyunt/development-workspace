@@ -37,8 +37,6 @@ First clone this repository and run
 docker build -t <image-name> .
 ```
 
-## Features
-
 The docker uses tmux as screen multiplexer and zsh as default shell. The `devuser` is the default user for the `Development Workspace` docker and has default user id of `1000` and group id of `1000`. You can change the default values when you manually build the docker image.
 
 ```
