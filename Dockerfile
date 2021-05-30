@@ -29,14 +29,16 @@ RUN apt-get update && \
 #     chmod +x /usr/local/bin/docker-compose
 
 # args and env variables
-ENV WORKSPACE_USER=devuser
-ENV LANG=en_US.UTF-8
-
 ARG TZ=UTC
 ARG UID=1000
 ARG GID=${UID}
+ARG LANG=en_US.UTF-8
+ARG WORKSPACE_USER=devuser
 ARG HOME=/home/${WORKSPACE_USER}
 ARG WORKSPACE=/workspace
+
+ENV WORKSPACE_USER=${WORKSPACE_USER}
+ENV LANG=${LANG}
 
 # add user for development
 RUN useradd -u ${UID} -m ${WORKSPACE_USER}
