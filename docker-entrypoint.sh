@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-su $WORKSPACE_USER -c 'tmux'
+su $WORKSPACE_USER -c "${1:-tmux}"
