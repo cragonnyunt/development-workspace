@@ -1,5 +1,7 @@
 # Development Workspace
 
+[![Development Workspace CI](https://github.com/cragonnyunt/development-workspace/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/cragonnyunt/development-workspace/actions/workflows/main.yml)
+
 Development Workspace Docker is the base image of docker built for developers. It contains the most used tools that every developers needed, and well prepared for comfortable development environment.
 
 Base image
@@ -14,10 +16,10 @@ Set of tools installed
 - zsh
 - vim
 
-## Building the image
+## Pulling the image
 
 ```
-docker build -t development-workspace .
+docker pull cragonnyunt/development-docker
 ```
 
 ## Running the image
@@ -25,10 +27,15 @@ docker build -t development-workspace .
 ```
 docker run --rm -it \
     -v $(pwd):/workspace \
-    development-workspace
+    cragonnyunt/development-docker
 ```
 
-## Features
+## Building the image from source
+
+First clone this repository and run
+```
+docker build -t <image-name> .
+```
 
 The docker uses tmux as screen multiplexer and zsh as default shell. The `devuser` is the default user for the `Development Workspace` docker and has default user id of `1000` and group id of `1000`. You can change the default values when you manually build the docker image.
 
@@ -41,7 +48,3 @@ docker build -t development-workspace \
     --build-arg WORKSPACE_USER=$WORKSPACE_USER \
     .
 ```
-
-## Future Works
-
-This development is intended to create more docker for specific language, like `php`, `python`, and `javascript`. Each docker will have its own set of tools and setup, this docker will be the minimal workspace for other.
