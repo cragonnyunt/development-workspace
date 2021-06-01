@@ -12,9 +12,11 @@ RUN apt-get update && \
     lsb \
     mysql-client \
     htop \
+    silversearcher-ag \
     software-properties-common \
     tmux \
     vim-gui-common \
+    wget \
     zsh
 
 # install docker
@@ -27,6 +29,12 @@ RUN apt-get update && \
 #     containerd.io && \
 #     curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
 #     chmod +x /usr/local/bin/docker-compose
+
+# install cheat for system cheatsheet command line
+RUN curl -L https://github.com/cheat/cheat/releases/download/4.2.1/cheat-linux-amd64.gz -o /cheat-linux-amd64.gz && \
+    gunzip /cheat-linux-amd64.gz && \
+    chmod +x /cheat-linux-amd64 && \
+    mv/cheat-linux-amd64 /usr/local/bin/cheat
 
 # args and env variables
 ARG TZ=UTC
