@@ -5,6 +5,7 @@ LABEL maintainer="mknyunt97@gmail.com"
 # update all packages
 RUN apt-get update && \
     apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
+    apt-get dist-upgrade -y && \
     apt-get install -y \
     apt-transport-https \
     git \
