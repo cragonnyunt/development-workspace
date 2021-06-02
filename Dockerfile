@@ -5,6 +5,7 @@ LABEL maintainer="mknyunt97@gmail.com"
 # update all packages
 RUN apt-get update && \
     apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
+    apt-get dist-upgrade -y && \
     apt-get install -y \
     apt-transport-https \
     git \
@@ -12,9 +13,11 @@ RUN apt-get update && \
     lsb \
     mysql-client \
     htop \
+    silversearcher-ag \
     software-properties-common \
     tmux \
     vim-gui-common \
+    wget \
     zsh
 
 # install docker
@@ -27,6 +30,12 @@ RUN apt-get update && \
 #     containerd.io && \
 #     curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
 #     chmod +x /usr/local/bin/docker-compose
+
+# install cheat for system cheatsheet command line
+RUN curl -L https://github.com/cheat/cheat/releases/download/4.2.1/cheat-linux-amd64.gz -o /cheat-linux-amd64.gz && \
+    gunzip /cheat-linux-amd64.gz && \
+    chmod +x /cheat-linux-amd64 && \
+    mv /cheat-linux-amd64 /usr/local/bin/cheat
 
 # args and env variables
 ARG TZ=UTC
@@ -50,6 +59,9 @@ RUN groupmod -g ${GID} ${WORKSPACE_USER}
 # RUN usermod -aG docker ${WORKSPACE_USER}
 
 USER ${WORKSPACE_USER}
+
+# configure cheat
+RUN yes | yes | cheat
 
 # install oh-my-zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
