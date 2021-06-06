@@ -9,11 +9,13 @@ Base image
 
 Set of tools installed
 - git
+- [cheat](https://github.com/cheat/cheat)
 - ping
 - mysql-client
-- top
-- tmux
+- htop
+- [tmux](https://github.com/tmux/tmux)
 - zsh
+- [ag](https://github.com/ggreer/the_silver_searcher)
 - vim
 
 ## Pulling the image
