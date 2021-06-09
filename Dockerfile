@@ -12,6 +12,7 @@ RUN apt-get update && \
     iputils-ping \
     lsb \
     mysql-client \
+    p7zip \
     htop \
     silversearcher-ag \
     software-properties-common \
