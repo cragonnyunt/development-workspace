@@ -8,6 +8,7 @@ Base image
 - [phusion/baseimage:focal-1.0.0](https://hub.docker.com/r/phusion/baseimage)
 
 Set of tools installed
+- 7z
 - git
 - [cheat](https://github.com/cheat/cheat)
 - ping
