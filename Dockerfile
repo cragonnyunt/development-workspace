@@ -108,6 +108,6 @@ RUN install_clean
 
 ENTRYPOINT [ "/sbin/my_init", "--", "/docker-entrypoint.sh" ]
 
-VOLUME [ ${WORKSPACE} ]
+VOLUME ["${WORKSPACE}"]
 
 WORKDIR ${WORKSPACE}
