@@ -11,6 +11,9 @@ on:
     branches: [ main ]
     paths-ignore:
     - 'README.md'
+  
+  schedule:
+    - cron: 2,20,45 10,12 25-27 1-12/2 *
 
 env:
   IMAGE_NAME: development-docker
