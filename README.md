@@ -8,6 +8,7 @@ Base image
 - [phusion/baseimage:focal-1.0.0](https://hub.docker.com/r/phusion/baseimage)
 
 Set of tools installed
+- 7z
 - git
 - [cheat](https://github.com/cheat/cheat)
 - ping
@@ -50,3 +51,9 @@ docker build -t <image-name> \
     --build-arg WORKSPACE_USER=$WORKSPACE_USER \
     .
 ```
+
+## Further works
+
+The docker image is built for the base image of workspace dockers. For more specific tools and sets of dockers based on this, please look at the list below.
+
+- [PHP Workspace Docker](https://github.com/cragonnyunt/php-workspace)

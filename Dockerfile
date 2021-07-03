@@ -12,12 +12,14 @@ RUN apt-get update && \
     iputils-ping \
     lsb \
     mysql-client \
+    p7zip-full \
     htop \
     silversearcher-ag \
     software-properties-common \
     tmux \
     vim-gui-common \
     wget \
+    zip \
     zsh
 
 # install docker
@@ -43,7 +45,7 @@ ARG UID=1000
 ARG GID=${UID}
 ARG LANG=en_US.UTF-8
 ARG WORKSPACE_USER=devuser
-ARG HOME=/home/${WORKSPACE_USER}
+ARG WORKSPACE_HOME=/home/${WORKSPACE_USER}
 ARG WORKSPACE=/workspace
 
 ENV WORKSPACE_USER=${WORKSPACE_USER}
@@ -74,18 +76,21 @@ RUN git clone https://github.com/arcticicestudio/nord-dircolors.git $HOME/nord-d
     ln -sr "$HOME/nord-dircolors/src/dir_colors" "$HOME/.dir_colors"
 
 # copy zsh config
-COPY zsh/zshrc ${HOME}/.zshrc
+COPY zsh/zshrc ${WORKSPACE_HOME}/.zshrc
 
 # copy tmux config
-COPY tmux/tmux.conf ${HOME}/.tmux.conf
+COPY tmux/tmux.conf ${WORKSPACE_HOME}/.tmux.conf
 
 # copy vim config
-COPY vim/vimrc ${HOME}/.vimrc
+COPY vim/vimrc ${WORKSPACE_HOME}/.vimrc
 
 # set tmux as default shell in bash
-RUN echo '[[ $TERM != "screen" ]] && exec tmux' >> ${HOME}/.bashrc
+RUN echo '[[ $TERM != "screen" ]] && exec tmux' >> ${WORKSPACE_HOME}/.bashrc
 
 USER root
+
+# set home folder owned by ${WORKSPACE_USER}
+RUN chown -R ${WORKSPACE_USER}:${WORKSPACE_USER} ${WORKSPACE_HOME}
 
 # set timezone
 RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && \
@@ -103,6 +108,6 @@ RUN install_clean
 
 ENTRYPOINT [ "/sbin/my_init", "--", "/docker-entrypoint.sh" ]
 
-VOLUME [ ${WORKSPACE} ]
+VOLUME ["${WORKSPACE}"]
 
 WORKDIR ${WORKSPACE}
