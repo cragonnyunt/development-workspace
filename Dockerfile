@@ -7,15 +7,15 @@ RUN apt-get update && \
     apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
     apt-get dist-upgrade -y && \
     apt-get install --no-install-recommends -y \
-    apt-transport-https \
+    # apt-transport-https \
     git \
     iputils-ping \
-    lsb \
+    # lsb \
     mysql-client \
     p7zip-full \
     htop \
     silversearcher-ag \
-    software-properties-common \
+    # software-properties-common \
     tmux \
     vim-gui-common \
     wget \
