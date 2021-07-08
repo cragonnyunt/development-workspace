@@ -6,7 +6,7 @@ LABEL maintainer="mknyunt97@gmail.com"
 RUN apt-get update && \
     apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
     apt-get dist-upgrade -y && \
-    apt-get install -y \
+    apt-get install --no-install-recommends -y \
     apt-transport-https \
     git \
     iputils-ping \
