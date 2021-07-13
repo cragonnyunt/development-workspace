@@ -57,3 +57,6 @@ docker build -t <image-name> \
 The docker image is built for the base image of workspace dockers. For more specific tools and sets of dockers based on this, please look at the list below.
 
 - [PHP Workspace Docker](https://github.com/cragonnyunt/php-workspace)
+- [Nodejs Workspace Docker](https://github.com/cragonnyunt/nodejs-workspace)
+- [Python Workspace Docker](https://github.com/cragonnyunt/python-workspace)
+- [Java Workspace Docker](https://github.com/cragonnyunt/java-workspace)
