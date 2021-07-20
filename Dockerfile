@@ -34,10 +34,10 @@ RUN apt-get update && \
 #     chmod +x /usr/local/bin/docker-compose
 
 # install cheat for system cheatsheet command line
-RUN curl -L https://github.com/cheat/cheat/releases/download/4.2.1/cheat-linux-amd64.gz -o /cheat-linux-amd64.gz && \
-    gunzip /cheat-linux-amd64.gz && \
-    chmod +x /cheat-linux-amd64 && \
-    mv /cheat-linux-amd64 /usr/local/bin/cheat
+# RUN curl -L https://github.com/cheat/cheat/releases/download/4.2.1/cheat-linux-amd64.gz -o /cheat-linux-amd64.gz && \
+#     gunzip /cheat-linux-amd64.gz && \
+#     chmod +x /cheat-linux-amd64 && \
+#     mv /cheat-linux-amd64 /usr/local/bin/cheat
 
 # args and env variables
 ARG TZ=UTC
@@ -63,7 +63,7 @@ RUN groupmod -g ${GID} ${WORKSPACE_USER}
 USER ${WORKSPACE_USER}
 
 # configure cheat
-RUN yes | yes | cheat
+# RUN yes | yes | cheat
 
 # install oh-my-zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
